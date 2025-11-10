@@ -1,0 +1,142 @@
+# Prompts and Implementation Process
+
+## Initial Prompt
+"Build a complete, production-minded E-Commerce web application using the MERN stack..."
+
+## Key Requirements Gathered
+1. Full authentication system (register, login, logout)
+2. Product browsing with search and filters
+3. Shopping cart functionality
+4. Guest cart with merge on login
+5. Checkout flow (mock payment)
+6. Responsive UI design
+7. Documentation files
+8. Seed script for sample products
+
+## Implementation Decisions
+
+### Stack Adaptation
+- **Original Request**: MERN (MongoDB, Express, React, Node.js)
+- **Actual Implementation**: FastAPI (Python) + React + MongoDB
+- **Reason**: Platform supports FastAPI backend, not Node.js/Express
+
+### Design Choices
+1. **State Management**: Context API + useReducer instead of Redux
+   - Lighter weight
+   - Sufficient for app complexity
+   - Built-in React solution
+
+2. **Styling**: Tailwind CSS + shadcn/ui
+   - Modern, utility-first approach
+   - Pre-built accessible components
+   - Highly customizable
+
+3. **Authentication**: JWT tokens
+   - Stateless authentication
+   - Easy to scale
+   - Industry standard
+
+4. **Database Driver**: Motor (async MongoDB driver)
+   - Non-blocking operations
+   - Better performance
+   - Native FastAPI integration
+
+5. **Cart Strategy**: 
+   - Guest: localStorage
+   - Authenticated: MongoDB
+   - Automatic sync on login
+
+6. **Payment**: Mock implementation
+   - No real payment gateway
+   - UI/UX demonstration only
+   - Easy to integrate Stripe later
+
+### Design System
+- **Fonts**: Space Grotesk (headings), Inter (body)
+- **Color Scheme**: Blue and purple gradients with modern accents
+- **Layout**: Clean, spacious, modern e-commerce aesthetic
+- **Animations**: Subtle hover effects and transitions
+
+## Innovations Added
+
+1. **Guest Cart Merge Logic**
+   - Automatically syncs guest cart with user cart on login
+   - Combines quantities if same product exists
+   - Seamless user experience
+
+2. **Real-time Cart Count**
+   - Badge on navbar shows total items
+   - Updates immediately on cart changes
+   - Mobile-responsive
+
+3. **Search and Filters**
+   - Live product search
+   - Category filtering
+   - Combines multiple filters
+
+4. **Free Shipping Threshold**
+   - Free shipping over $50
+   - Visual indicator showing how much more to add
+   - Encourages larger purchases
+
+5. **Toast Notifications**
+   - User feedback for all actions
+   - Success/error states
+   - Non-intrusive design
+
+6. **Stock Management**
+   - Shows available stock
+   - Prevents ordering out-of-stock items
+   - Visual indicators (green/orange)
+
+7. **Responsive Design**
+   - Mobile-first approach
+   - Tablet and desktop optimized
+   - Hamburger menu on mobile
+
+8. **Protected Routes**
+   - Checkout requires authentication
+   - Automatic redirect to login
+   - Preserves intended destination
+
+## Testing Approach
+- Comprehensive data-testid attributes on all interactive elements
+- Ready for automated testing
+- Manual testing performed during development
+
+## File Organization
+```
+frontend/
+  src/
+    contexts/     # State management
+    components/   # Reusable components
+    pages/        # Route components
+    
+backend/
+  server.py       # Main API
+  seed_products.py # Database seeding
+  .env            # Environment variables
+
+docs/
+  architecture.md    # System design
+  api-endpoints.md   # API documentation
+  prompts-used.txt   # This file
+```
+
+## Seed Data
+- 12 sample products across 4 categories
+- Real product images from Unsplash
+- Realistic pricing and descriptions
+- Varied stock levels
+
+## Future Enhancement Suggestions
+1. Real payment integration (Stripe)
+2. Order history and tracking
+3. Product reviews and ratings
+4. Wishlist functionality
+5. Admin dashboard
+6. Email notifications
+7. Advanced filtering (price range, ratings)
+8. Related products
+9. Recently viewed products
+10. Social sharing
