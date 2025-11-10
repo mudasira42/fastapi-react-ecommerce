@@ -1,0 +1,111 @@
+Prompt that i gave to fetch the prompt from chatgpt:
+
+
+You are a senior full-stack engineer.
+Build a complete E-Commerce Web Application using FastAPI (Python) for the backend and React for the frontend.
+The app should let users:
+Browse and search products
+View product details
+Add and remove products from a cart
+Manage quantities and view total cost
+Register and log in with JWT authentication
+The backend should be FastAPI + MongoDB (Motor driver) with bcrypt for password hashing and Pydantic for schema validation.
+The frontend should be built with React 19, React Router DOM v7, Tailwind CSS + shadcn/ui for styling, Axios for API calls, and Context API for state management.
+Deliver these artifacts:
+Technical architecture documentation (docs/architecture.md)
+Functional codebase (frontend + backend)
+Prompts used for generation (docs/prompts-used.txt)
+Include:
+Clear folder structure
+All required code files
+.env.example file
+README with setup and run instructions
+Keep the design modern, responsive, and production-ready.
+End with an architecture explanation and run commands.
+
+Prompt that i gave it to the AI to build :
+
+
+Role: You are a senior full-stack engineer and software architect.
+Goal: Create a complete, modular, production-ready E-Commerce Web Application with the following tech stack:
+Backend (Python):
+FastAPI (v0.110+)
+MongoDB Atlas using Motor (async driver)
+JWT authentication with bcrypt
+Pydantic models for validation
+Frontend (React):
+React 19
+React Router DOM v7
+Tailwind CSS + shadcn/ui for modern responsive UI
+Context API for cart and user state management
+Axios for REST API calls
+Sonner for toast notifications
+Functional Requirements
+Users can:
+Browse and filter products
+View detailed product pages
+Add or remove items from the cart
+Adjust quantities dynamically
+See subtotal and total
+Register and log in securely (JWT)
+Backend APIs:
+POST /auth/register – create user
+POST /auth/login – authenticate user
+GET /products – get product list
+GET /products/{id} – get product details
+GET /cart – get user cart
+POST /cart – add/update item
+DELETE /cart/{id} – remove item
+Database Models (MongoDB via Motor)
+User: { name, email, password_hash }
+Product: { name, price, category, description, imageUrl, stock }
+Cart: { user_id, product_id, quantity }
+Project Folder Structure
+ecommerce-app/
+├── backend/
+│   ├── server.py
+│   ├── routes/
+│   ├── models/
+│   ├── controllers/
+│   ├── utils/
+│   ├── requirements.txt
+│   └── .env.example
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── context/
+│   │   ├── App.jsx
+│   │   └── main.jsx
+│   └── package.json
+├── docs/
+│   ├── architecture.md
+│   ├── api-endpoints.md
+│   └── prompts-used.txt
+└── README.md
+Documentation to Generate
+docs/architecture.md – System diagram + data flow (Frontend ↔ FastAPI ↔ MongoDB).
+docs/api-endpoints.md – All endpoints, request/response examples.
+docs/prompts-used.txt – Include this master prompt and sub-prompts.
+README.md – Setup instructions, environment variables, and run commands.
+Environment Variables (.env.example)
+MONGO_URI=your_mongodb_atlas_uri
+JWT_SECRET=your_secret_key
+PORT=8000
+Frontend Features
+Navbar with cart badge and auth links
+Product list and product detail pages
+Cart page (quantity management, total display)
+Login/Register forms
+Global state with Context API
+Toast notifications using Sonner
+Final Output Must Include
+Complete backend + frontend code (file-by-file)
+.env.example and requirements.txt
+Readable folder structure
+Setup commands and run instructions
+Short summary explaining architecture and data flow
+Final Instruction:
+Generate the full runnable codebase (React + FastAPI + MongoDB) with clean architecture, comments, and documentation.
+Ensure it can run locally with npm run dev and uvicorn server:app --reload.
+End with a short Architecture Summary.
