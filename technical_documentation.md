@@ -48,9 +48,6 @@ This full-stack system connects a **React 19 frontend** with a **FastAPI backend
 **📄 File:** `docs/architecture.md`  
 **📁 Diagram:** `docs/architecture-diagram.png`
 
----
-
-✅ Once committed, your GitHub repo will show the image directly in the Markdown file!
 
 ---
 
