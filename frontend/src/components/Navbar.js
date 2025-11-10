@@ -120,27 +120,31 @@ export const Navbar = () => {
             <div className="flex flex-col space-y-3">
               <Link
                 to="/"
+                data-testid="mobile-nav-home-link"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors block"
               >
                 Home
               </Link>
               <Link
                 to="/products"
+                data-testid="mobile-nav-products-link"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors block"
               >
                 Products
               </Link>
               <Link
                 to="/about"
+                data-testid="mobile-nav-about-link"
                 onClick={() => setMobileMenuOpen(false)}
-                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors"
+                className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors block"
               >
                 About
               </Link>
               <Link
                 to="/cart"
+                data-testid="mobile-nav-cart-link"
                 onClick={() => setMobileMenuOpen(false)}
                 className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-lg transition-colors flex items-center justify-between"
               >
