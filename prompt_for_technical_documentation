@@ -1,0 +1,54 @@
+Prompt to Generate Technical Architecture Documentation
+Prompt:
+You are a senior full-stack architect.
+Create a detailed Technical Architecture Documentation (docs/architecture.md) for a full-stack E-Commerce Web Application built using the following stack:
+Frontend:
+React 19
+React Router DOM v7
+Tailwind CSS + shadcn/ui for responsive UI
+Context API for global state management
+Axios for REST API communication
+Sonner for notifications
+Backend:
+FastAPI (Python)
+MongoDB Atlas with Motor (async driver)
+JWT authentication with bcrypt
+Pydantic for schema validation
+🧩 The documentation should include:
+System Overview
+Explain the architecture layers (Frontend, Backend, Database) and how they interact.
+Include a textual diagram (ASCII style) showing data flow between client, API, and database.
+Responsibilities
+Define the main responsibility of each layer: UI, API, Database.
+Mention how state and authentication are handled.
+Component & Module Structure
+Describe frontend folder hierarchy (components/, pages/, context/, api/).
+Describe backend folder hierarchy (routes/, models/, services/, utils/).
+Data Models (MongoDB Schema Design)
+Include example Pydantic models for User, Product, and Cart.
+Explain relationships and indexes.
+API Flow & Endpoints Summary
+Show how requests move from React → FastAPI → MongoDB.
+Include examples like: Login, Product Fetch, Add to Cart.
+Authentication Flow (JWT)
+Step-by-step explanation of how JWTs are generated, validated, and used.
+Show how protected routes are handled in FastAPI and React.
+State Management Flow (Context API)
+Explain how the cart and user data are managed globally.
+Describe how guest carts merge with user carts after login.
+Security & Validation
+Mention bcrypt password hashing, token expiration, and Pydantic validation.
+Performance & Scalability Notes
+Discuss async performance, connection pooling, pagination, and horizontal scaling.
+Deployment Overview
+Describe how frontend (Vercel) and backend (Render/Railway) are deployed.
+Mention environment variables (MONGO_URI, JWT_SECRET, PORT).
+Run Instructions (for developers)
+Include commands for setting up backend (FastAPI) and frontend (React).
+Closing Notes
+Summarize trade-offs, extension possibilities (like payments, search filters), and testing approach.
+🧠 Tone & Format:
+Write it in Markdown (#, ##, lists, code blocks).
+Use headings, subheadings, and diagrams for clarity.
+Keep explanations detailed but easy to follow.
+Aim for a document that would impress a technical interviewer or engineering manager.
