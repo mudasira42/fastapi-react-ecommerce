@@ -31,10 +31,13 @@ export const Register = () => {
         formData
       );
       
-      login(response.data.access_token, response.data.user);
+      const { access_token, user } = response.data;
       
-      // Sync guest cart after registration
-      await syncGuestCart();
+      // Sync guest cart BEFORE setting auth state
+      await syncGuestCart(access_token);
+      
+      // Then login
+      login(access_token, user);
       
       toast.success('Account created successfully!');
       navigate('/');
