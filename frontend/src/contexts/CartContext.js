@@ -85,26 +85,38 @@ export const CartProvider = ({ children }) => {
     }
   };
 
-  const syncGuestCart = async () => {
+  const syncGuestCart = async (authToken) => {
     const guestCart = localStorage.getItem('guestCart');
-    if (guestCart && token) {
+    const tokenToUse = authToken || token;
+    
+    if (guestCart && tokenToUse) {
       try {
         const items = JSON.parse(guestCart);
-        const syncData = items.map((item) => ({
-          product_id: item.product.id,
-          quantity: item.quantity,
-        }));
-        
-        await axios.post(
-          `${process.env.REACT_APP_BACKEND_URL}/api/cart/sync`,
-          syncData,
-          {
-            headers: { Authorization: `Bearer ${token}` },
-          }
-        );
-        
-        localStorage.removeItem('guestCart');
-        await fetchCart();
+        if (items.length > 0) {
+          const syncData = items.map((item) => ({
+            product_id: item.product.id,
+            quantity: item.quantity,
+          }));
+          
+          await axios.post(
+            `${process.env.REACT_APP_BACKEND_URL}/api/cart/sync`,
+            syncData,
+            {
+              headers: { Authorization: `Bearer ${tokenToUse}` },
+            }
+          );
+          
+          localStorage.removeItem('guestCart');
+          
+          // Fetch updated cart with new token
+          const response = await axios.get(
+            `${process.env.REACT_APP_BACKEND_URL}/api/cart`,
+            {
+              headers: { Authorization: `Bearer ${tokenToUse}` },
+            }
+          );
+          dispatch({ type: 'SET_CART', payload: response.data });
+        }
       } catch (error) {
         console.error('Failed to sync cart:', error);
       }
